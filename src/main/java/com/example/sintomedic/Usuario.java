@@ -36,8 +36,11 @@ public class Usuario {
 
     private String Num_colegiado;
     private Date Fecha_nacimiento;
+
+
+
     @NotBlank
-    private String Id_Enfermedad;
+    private String id_lista_enfermedades;
 
     private String Tratamiento ;
 
@@ -65,7 +68,13 @@ public class Usuario {
         DNI_NIE = dni_nie;
         id=id;
     }
+    public String getId_lista_enfermedades() {
+        return id_lista_enfermedades;
+    }
 
+    public void setId_lista_enfermedades(String id_lista_enfermedades) {
+        this.id_lista_enfermedades = id_lista_enfermedades;
+    }
     public Long getId() {
         return id;
     }
@@ -146,13 +155,7 @@ public class Usuario {
         Fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getId_Enfermedad() {
-        return Id_Enfermedad;
-    }
 
-    public void setId_Enfermedad(String id_Enfermedad) {
-        Id_Enfermedad = id_Enfermedad;
-    }
 
     public String getTratamiento() {
         return Tratamiento;

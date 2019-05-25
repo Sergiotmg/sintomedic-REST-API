@@ -24,7 +24,6 @@ public class UsuarioController {
         return usuarioRepositorio.findAll();
     }
 
-
     // Create a new Note/*
     @PostMapping("/usuario")
     public Usuario createNote(@Valid @RequestBody Usuario book) {
@@ -51,9 +50,21 @@ public class UsuarioController {
         usuario.setCompaniaAseguradora(usuarioDetails.getCompaniaAseguradora());
         usuario.setCorreo(usuarioDetails.getCorreo());
         usuario.setDNI_NIE(usuarioDetails.getDNI_NIE());
-        usuario.setId(usuarioDetails.getId());
+        //usuario.setId(usuarioDetails.getId()); no cambiar id nunca
         usuario.setLocalidad(usuarioDetails.getLocalidad());
         usuario.setTelefono(usuarioDetails.getTelefono());
+        usuario.setNum_colegiado(usuarioDetails.getNum_colegiado());
+        usuario.setFecha_nacimiento(usuarioDetails.getFecha_nacimiento());
+        usuario.setTratamiento(usuarioDetails.getTratamiento());
+        usuario.setId_lista_doctores(usuarioDetails.getId_lista_doctores());
+        usuario.setId_lista_pacientes(usuarioDetails.getId_lista_pacientes());
+        usuario.setId_lista_proximas_consultas(usuarioDetails.getId_lista_proximas_consultas());
+        usuario.setId_lista_sintomas(usuarioDetails.getId_lista_sintomas());
+        usuario.setEs_doctor(usuarioDetails.getEs_doctor());
+        usuario.setEs_paciente(usuarioDetails.getEs_paciente());
+        usuario.setLink_foto_perfil(usuarioDetails.getLink_foto_perfil());
+        usuario.setContrasenia(usuarioDetails.getContrasenia());
+
 
         Usuario updatedUsuario = usuarioRepositorio.save(usuario);
 
