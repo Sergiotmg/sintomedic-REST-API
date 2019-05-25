@@ -1,4 +1,4 @@
 package com.example.sintomedic;
 
-public class PacienteRepositorio {
+public class UsuarioRepositorio {
 }

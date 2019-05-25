@@ -1,4 +1,4 @@
-package exception;
+package com.example.sintomedic.exception;
 
 public class PacienteNotFoundException extends Exception {
     private long id;
