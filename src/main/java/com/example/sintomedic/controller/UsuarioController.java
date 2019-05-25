@@ -1,9 +1,12 @@
 package com.example.sintomedic.controller;
 
 
+import com.example.sintomedic.Sintoma;
 import com.example.sintomedic.Usuario;
+import com.example.sintomedic.exception.SintomaNotFoundException;
 import com.example.sintomedic.exception.UsuarioNotFoundException;
-import com.example.sintomedic.repositorios.UsuarioRepositorio;
+import com.example.sintomedic.repositorios.SintomasRepositorio;
+import com.example.sintomedic.repositorios.UsuariosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,35 +18,38 @@ import java.util.List;
 public class UsuarioController {
 
     @Autowired
-    UsuarioRepositorio usuarioRepositorio;
+    UsuariosRepositorio usuariosRepositorio;
+    SintomasRepositorio sintomasRepositorio;
+    //PARA USUARIOS
 
     // Get All users
 
-    @GetMapping("/usuario")
-    public List<Usuario> getAllNotes() {
-        return usuarioRepositorio.findAll();
+    @GetMapping("/usuarios")
+    public List<Usuario> getAllUsers() {
+        return usuariosRepositorio.findAll();
     }
 
-    // Create a new Note/*
-    @PostMapping("/usuario")
-    public Usuario createNote(@Valid @RequestBody Usuario book) {
-        return usuarioRepositorio.save(book);
+    // Create a new USER/*
+    @PostMapping("/usuarios")
+    public Usuario createUser(@Valid @RequestBody Usuario book) {
+        return usuariosRepositorio.save(book);
     }
 
-    // Get a Single Note
-    @GetMapping("/usuario/{id}")
-    public Usuario getNoteById(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
-        return usuarioRepositorio.findById(id)
+    // Get a Single USER
+    @GetMapping("/usuarios/{id}")
+    public Usuario getUserById(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
+        return usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
-    // Update a Note
-    @PutMapping("/usuario/{id}")
-    public Usuario updateNote(@PathVariable(value = "id") Long id,
-                               @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
+    // Update a USER
+    @PutMapping("/usuarios/{id}")
+    public Usuario updateUser(@PathVariable(value = "id") Long id,
+                              @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
 
-        Usuario usuario = usuarioRepositorio.findById(id)
+        Usuario usuario = usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
+
 
         usuario.setNombre(usuarioDetails.getNombre());
         usuario.setApellidos(usuarioDetails.getApellidos());
@@ -66,18 +72,72 @@ public class UsuarioController {
         usuario.setContrasenia(usuarioDetails.getContrasenia());
 
 
-        Usuario updatedUsuario = usuarioRepositorio.save(usuario);
+        Usuario updatedUsuario = usuariosRepositorio.save(usuario);
 
         return updatedUsuario;
     }
 
-    // Delete a Note
+    // Delete a USER
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<?> deleteUsuario(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
-        Usuario usuario = usuarioRepositorio.findById(id)
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
+        Usuario usuario = usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
 
-        usuarioRepositorio.delete(usuario);
+        usuariosRepositorio.delete(usuario);
+
+        return ResponseEntity.ok().build();
+    }
+
+    //************************ SINTOMAS *****************
+
+    // Get All SINTOMAS
+
+    @GetMapping("/sintomas")
+    public List<Sintoma> getAllSintomas() {
+        return sintomasRepositorio.findAll();
+    }
+
+    // Create a new SINTOMA/*
+    @PostMapping("/sintomas")
+    public Sintoma createSintomas(@Valid @RequestBody Sintoma sintoma) {
+        return sintomasRepositorio.save(sintoma);
+    }
+
+
+    // Get a Single SINTOMA
+    @GetMapping("/sintomas/{id}")
+    public Sintoma getSintomaById(@PathVariable(value = "id") Long id) throws SintomaNotFoundException {
+        return  sintomasRepositorio.findById(id)
+                .orElseThrow(() -> new SintomaNotFoundException(id));
+
+    }
+
+
+
+    // Update a SINTOMA
+    @PutMapping("/sintomas/{id}")
+    public Sintoma updateSintoma(@PathVariable(value = "id") Long id,
+                              @Valid @RequestBody Sintoma sintomaDetails) throws SintomaNotFoundException {
+
+        Sintoma sintoma = sintomasRepositorio.findById(id)
+                .orElseThrow(() -> new SintomaNotFoundException(id));
+
+        sintoma.setDescripcion(sintomaDetails.getDescripcion());
+        // FALTAN EL RESTO!!!!!!!!!!!!
+
+
+        Sintoma updateSintoma = sintomasRepositorio.save(sintoma);
+
+        return updateSintoma;
+    }
+
+    // Delete a SINTOMA
+    @DeleteMapping("/sintomas/{id}")
+    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
+        Usuario usuario = usuariosRepositorio.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException(id));
+
+        usuariosRepositorio.delete(usuario);
 
         return ResponseEntity.ok().build();
     }
