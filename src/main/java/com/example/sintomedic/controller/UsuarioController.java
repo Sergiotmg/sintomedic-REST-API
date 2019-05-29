@@ -29,17 +29,17 @@ public class UsuarioController {
         return usuariosRepositorio.findAll();
     }
 
-    // Create a new USER/*
-    @PostMapping("/usuarios")
-    public Usuario createUser(@Valid @RequestBody Usuario book) {
-        return usuariosRepositorio.save(book);
-    }
-
     // Get a Single USER
     @GetMapping("/usuarios/{id}")
     public Usuario getUserById(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
         return usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
+    }
+
+    // Create a new USER/*
+    @PostMapping("/usuarios")
+    public Usuario createUser(@Valid @RequestBody Usuario book) {
+        return usuariosRepositorio.save(book);
     }
 
     // Update a USER
