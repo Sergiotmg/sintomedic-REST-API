@@ -46,16 +46,16 @@ public class UsuarioController {
 
     // Get a Single USER
     @GetMapping("/usuarios/{id}")
-    /*public Usuario getUserById(@PathVariable(value = "id") Long id) throws Throwable {
-        return usuariosRepositorio.findById(id)
+    public Usuario getUserById(@PathVariable(value = "id") Long id) throws Throwable {
+        return (Usuario) usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
-    }*/
+    }
 
     // Create a new USER/*
-    /*@PostMapping("/usuarios")
-    public Usuario createUser(@Valid @RequestBody Usuario book) {
-        return usuariosRepositorio.save(book);
-    }*/
+    @PostMapping("/usuarios")
+    public Usuario createUser(@Valid @RequestBody Usuario usuario) {
+        return (Usuario) usuariosRepositorio.save(usuario);
+    }
 
     // Update a USER
     @PutMapping("/usuarios/{id}")
