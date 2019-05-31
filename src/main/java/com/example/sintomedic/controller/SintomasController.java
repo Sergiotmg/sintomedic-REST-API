@@ -67,8 +67,8 @@ public class SintomasController {
 
     // Delete a SINTOMA
     @DeleteMapping("/sintomas/{id}")
-    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws UsuarioNotFoundException {
-        Usuario usuario = usuariosRepositorio.findById(id)
+    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws Throwable {
+        Usuario usuario = (Usuario) usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
 
         usuariosRepositorio.delete(usuario);
