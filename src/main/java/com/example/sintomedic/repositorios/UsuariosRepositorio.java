@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UsuariosRepositorio<usuario> extends JpaRepository<Usuario, Long> {
-    //debe llegarle el id_doctor!!!
+    public Usuario findByDniAndPassword(String dni, String password);
 
     String get_pacientes_de_un_doctor = "FROM lista_pacientes_de_doctor WHERE id = :id_doctor";
     @Query(get_pacientes_de_un_doctor)

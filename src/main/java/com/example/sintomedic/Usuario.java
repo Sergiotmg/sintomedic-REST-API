@@ -1,5 +1,6 @@
 package com.example.sintomedic;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import sun.util.calendar.BaseCalendar;
 
@@ -60,13 +61,14 @@ public class Usuario {
     @NotBlank
     private String  Contrasenia ;
 
-    public Usuario(){
+    /* public Usuario(){
         super();
-    }
-    public Usuario(Long id, @NotBlank String dni_nie) {
+    }*/
+
+    public Usuario( @JsonProperty("contrasenia")String contrasenia, @JsonProperty("dni_nie") String dni_nie) {
         super();
-        DNI_NIE = dni_nie;
-        id=id;
+        this.DNI_NIE = dni_nie;
+        this.Contrasenia=contrasenia;
     }
     public String getId_lista_enfermedades() {
         return id_lista_enfermedades;
