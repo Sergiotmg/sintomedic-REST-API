@@ -2,11 +2,8 @@ package com.example.sintomedic.controller;
 
 
 import com.example.sintomedic.Sintoma;
-import com.example.sintomedic.Usuario;
 import com.example.sintomedic.exception.SintomaNotFoundException;
-import com.example.sintomedic.exception.UsuarioNotFoundException;
 import com.example.sintomedic.repositorios.SintomasRepositorio;
-import com.example.sintomedic.repositorios.UsuariosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,11 +37,10 @@ public class SintomasController {
     // Get a Single SINTOMA
     @GetMapping("/sintomas/{id}")
     public Sintoma getSintomaById(@PathVariable(value = "id") int id) throws SintomaNotFoundException {
-        return  sintomasRepositorio.findById(id)
+        return sintomasRepositorio.findById(id)
                 .orElseThrow(() -> new SintomaNotFoundException(id));
 
     }
-
 
 
     // Update a SINTOMA

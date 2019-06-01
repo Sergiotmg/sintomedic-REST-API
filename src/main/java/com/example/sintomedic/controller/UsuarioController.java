@@ -3,29 +3,34 @@ package com.example.sintomedic.controller;
 
 import com.example.sintomedic.Usuario;
 import com.example.sintomedic.exception.UsuarioNotFoundException;
+import com.example.sintomedic.repositorios.SintomasRepositorio;
 import com.example.sintomedic.repositorios.UsuariosRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Para acceder a los datos necesitamos esto un controller
+ */
 @RestController
 public class UsuarioController {
 
-    @Autowired
+    //sin autorired, la inyeccion via constructor
+    private UsuariosRepositorio usuariosRepositorio;
 
-    UsuariosRepositorio usuariosRepositorio;
-
+    public UsuarioController(UsuariosRepositorio usuariosRepositorio) {
+       this.usuariosRepositorio = usuariosRepositorio;
+    }
 
     //PARA USUARIOS
     //register
 
-    @RequestMapping("/api/register")
+    /*@RequestMapping("/api/register")
     @ResponseBody
-    /*public Long register(@RequestBody Usuario user) {
-       return userService.registerUser(user);
+    public Long register(@RequestBody Usuario user) {
+       return usuariosRepositorio.registerUser(user);
     }*/
 
     // Get All users
@@ -37,61 +42,62 @@ public class UsuarioController {
 
 
     // Get a Single USER
-    @GetMapping("/usuarios/{id}")
+    //@GetMapping("/usuarios/{id}")
+    @GetMapping(path = {"/{id}"})
     public Usuario getUserById(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
-        return usuariosRepositorio.findById(id);
+        return usuariosRepositorio.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
     // Create a new USER/*
     @PostMapping("/usuarios")
     public Usuario createUser(@Valid @RequestBody Usuario usuario) {
-        return (Usuario) usuariosRepositorio.save(usuario);
+        return usuariosRepositorio.save(usuario);
     }
 
     // Update a USER
     @PutMapping("/usuarios/{id}")
     public Usuario updateUser(@PathVariable(value = "id") int id,
-                              @Valid @RequestBody Usuario usuarioDetails)  {
+                              @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
 
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id);
-
+        Usuario usuario = usuariosRepositorio.findById(id).
+                orElseThrow(() -> new UsuarioNotFoundException(id));
 
 
         usuario.setNombre(usuarioDetails.getNombre());
         usuario.setApellidos(usuarioDetails.getApellidos());
         usuario.setCompaniaAseguradora(usuarioDetails.getCompaniaAseguradora());
         usuario.setCorreo(usuarioDetails.getCorreo());
-        usuario.setDNI_NIE(usuarioDetails.getDNI_NIE());
-        //usuario.setId(usuarioDetails.getId()); no cambiar id nunca
+        usuario.setDniNie(usuarioDetails.getDniNie());
+        //usuario.setId(usuarioDetails.getId()); no cambiar id nunca, tal cual XD
         usuario.setLocalidad(usuarioDetails.getLocalidad());
         usuario.setTelefono(usuarioDetails.getTelefono());
-        usuario.setNum_colegiado(usuarioDetails.getNum_colegiado());
-        usuario.setFecha_nacimiento(usuarioDetails.getFecha_nacimiento());
+        usuario.setNumColegiado(usuarioDetails.getNumColegiado());
+        usuario.setFechaNacimiento(usuarioDetails.getFechaNacimiento());
         usuario.setTratamiento(usuarioDetails.getTratamiento());
-        usuario.setId_lista_doctores(usuarioDetails.getId_lista_doctores());
-        usuario.setId_lista_pacientes(usuarioDetails.getId_lista_pacientes());
-        usuario.setId_lista_proximas_consultas(usuarioDetails.getId_lista_proximas_consultas());
-        usuario.setId_lista_sintomas(usuarioDetails.getId_lista_sintomas());
-        usuario.setEs_doctor(usuarioDetails.getEs_doctor());
-        usuario.setEs_paciente(usuarioDetails.getEs_paciente());
-        usuario.setLink_foto_perfil(usuarioDetails.getLink_foto_perfil());
+        usuario.setIdListaDoctores(usuarioDetails.getIdListaDoctores());
+        usuario.setIdListaPacientes(usuarioDetails.getIdListaPacientes());
+        usuario.setIdListaProximasConsultas(usuarioDetails.getIdListaProximasConsultas());
+        usuario.setIdListaSintomas(usuarioDetails.getIdListaSintomas());
+        usuario.setEsDoctor(usuarioDetails.getEsDoctor());
+        usuario.setEsPaciente(usuarioDetails.getEsPaciente());
+        usuario.setLinkFotoPerfil(usuarioDetails.getLinkFotoPerfil());
         usuario.setContrasenia(usuarioDetails.getContrasenia());
 
 
-        Usuario updatedUsuario = (Usuario) usuariosRepositorio.save(usuario);
+        Usuario updatedUsuario = usuariosRepositorio.save(usuario);
 
         return updatedUsuario;
     }
 
     // Delete a USER
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> deleteUser(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id);
-
-        usuariosRepositorio.delete(usuario);
-
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") int id) throws Throwable {
+        return usuariosRepositorio.findById(id)
+                .map(borrar -> {
+                    usuariosRepositorio.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
-
 
 }
