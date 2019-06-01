@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import sun.util.calendar.BaseCalendar;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -229,5 +226,8 @@ public class Usuario {
 
     public void setContrasenia(String contrasenia) {
         Contrasenia = contrasenia;
+    }
+
+    public Object orElseThrow(Object o) {
     }
 }

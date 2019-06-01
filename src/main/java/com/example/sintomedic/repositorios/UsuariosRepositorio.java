@@ -10,11 +10,15 @@ import java.util.Optional;
 
 @Repository
 public interface UsuariosRepositorio extends JpaRepository<Usuario, Integer> {
-    public Usuario findByDniAndPassword(String dni, String password);
+    public Usuario findById(int id);
+    public Usuario findByIdAndDni(int id,String dni_nie);
+    //public Usuario findByDniAndPassword(String dni, String password);
+
+   /*FALLA ESA QUERY
 
    String get_pacientes_de_un_doctor = "FROM lista_pacientes_de_doctor WHERE id = :id_doctor";
     @Query(get_pacientes_de_un_doctor)
-    Optional<Usuario> findById(int id);
+    Optional<Usuario> findById(int id);*/
 
 
 

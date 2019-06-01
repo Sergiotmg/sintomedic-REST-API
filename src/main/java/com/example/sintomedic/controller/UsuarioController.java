@@ -1,18 +1,14 @@
 package com.example.sintomedic.controller;
 
 
-import com.example.sintomedic.Sintoma;
 import com.example.sintomedic.Usuario;
-import com.example.sintomedic.exception.SintomaNotFoundException;
 import com.example.sintomedic.exception.UsuarioNotFoundException;
-import com.example.sintomedic.repositorios.SintomasRepositorio;
 import com.example.sintomedic.repositorios.UsuariosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -21,7 +17,6 @@ public class UsuarioController {
     @Autowired
 
     UsuariosRepositorio usuariosRepositorio;
-    SintomasRepositorio sintomasRepositorio;
 
 
     //PARA USUARIOS
@@ -44,7 +39,7 @@ public class UsuarioController {
     // Get a Single USER
     @GetMapping("/usuarios/{id}")
     public Usuario getUserById(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
-        return usuariosRepositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        return usuariosRepositorio.findById(id);
     }
 
     // Create a new USER/*
@@ -56,10 +51,9 @@ public class UsuarioController {
     // Update a USER
     @PutMapping("/usuarios/{id}")
     public Usuario updateUser(@PathVariable(value = "id") int id,
-                              @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
+                              @Valid @RequestBody Usuario usuarioDetails)  {
 
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id).
-                orElseThrow(() -> new UsuarioNotFoundException(id));
+        Usuario usuario = (Usuario) usuariosRepositorio.findById(id);
 
 
 
@@ -91,9 +85,8 @@ public class UsuarioController {
 
     // Delete a USER
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> deleteUser(@PathVariable(value = "id") int id) throws Throwable {
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
-
+    public ResponseEntity<Usuario> deleteUser(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
+        Usuario usuario = (Usuario) usuariosRepositorio.findById(id);
 
         usuariosRepositorio.delete(usuario);
 
