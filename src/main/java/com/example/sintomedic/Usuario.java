@@ -1,88 +1,78 @@
 package com.example.sintomedic;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
-
 public class Usuario {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
     @NotBlank
-    private String Nombre;
-    @NotBlank
-    private String Apellidos;
-    private String Localidad;
-
-    private String  Correo ;
-    private String Lugar_consulta;
-    private String CompaniaAseguradora;
-    private String  Telefono ;
+    private String nombre;
 
     @NotBlank
-    private String DNI_NIE;
-
-    private String Num_colegiado;
-    @NotBlank
-    private Date Fecha_nacimiento;
+    private String apellidos;
+    private String localidad;
 
     @NotBlank
-    private String id_lista_enfermedades;
+    private String correo;
 
-    private String Tratamiento ;
+    private String companiaAseguradora;
+    private String telefono;
 
     @NotBlank
-    private String id_lista_pacientes;
-    @NotBlank
-    private String id_lista_doctores;
-    @NotBlank
-    private String id_lista_proximas_consultas;
-    @NotBlank
-    private String id_lista_sintomas;
-    @NotBlank
-    private Boolean es_doctor ;
-    @NotBlank
-    private Boolean es_paciente ;
+    private String dniNie;
 
-    private String link_foto_perfil ;
-    @NotBlank
-    private String  Contrasenia ;
+    private String numColegiado;
+    private Date fechaNacimiento;
 
-    /* public Usuario(){
+    @NotBlank
+    private String idListaEnfermedades;
+
+    private String tratamiento;
+
+    private String idListaPacientes;
+
+    private String idListaDoctores;
+
+    private String idListaProximasConsultas;
+
+    private String idListaSintomas;
+
+    //@NotBlank
+    private Boolean esDoctor;
+
+    //@NotBlank
+    private Boolean esPaciente;
+
+    private String linkFotoPerfil;
+    //@NotBlank
+    private String contrasenia;
+
+    public Usuario(){
         super();
+    }
+
+    /*public Usuario(@JsonProperty("contrasenia") String contrasenia, @JsonProperty("dni_nie") String dniNie) {
+        super();
+        this.dniNie = dniNie;
+        this.contrasenia = contrasenia;
     }*/
 
-
-
-    //sirve lo de @JSONProperty??
-    public Usuario( @JsonProperty("contrasenia")String contrasenia, @JsonProperty("dni_nie") String dni_nie) {
-        super();
-        this.DNI_NIE = dni_nie;
-        this.Contrasenia=contrasenia;
-    }
-    public String getLugar_consulta() {
-        return Lugar_consulta;
+    public String getIdListaEnfermedades() {
+        return idListaEnfermedades;
     }
 
-    public void setLugar_consulta(String lugar_consulta) {
-        Lugar_consulta = lugar_consulta;
-    }
-    public String getId_lista_enfermedades() {
-        return id_lista_enfermedades;
+    public void setIdListaEnfermedades(String idListaEnfermedades) {
+        this.idListaEnfermedades = idListaEnfermedades;
     }
 
-    public void setId_lista_enfermedades(String id_lista_enfermedades) {
-        this.id_lista_enfermedades = id_lista_enfermedades;
-    }
     public Long getId() {
         return id;
     }
@@ -92,151 +82,206 @@ public class Usuario {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        Nombre = nombre;
+        this.nombre = nombre;
     }
 
     public String getApellidos() {
-        return Apellidos;
+        return apellidos;
     }
 
     public void setApellidos(String apellidos) {
-        Apellidos = apellidos;
+        this.apellidos = apellidos;
     }
 
     public String getLocalidad() {
-        return Localidad;
+        return localidad;
     }
 
     public void setLocalidad(String localidad) {
-        Localidad = localidad;
+        this.localidad = localidad;
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public void setCorreo(String correo) {
-        Correo = correo;
+        this.correo = correo;
     }
 
     public String getCompaniaAseguradora() {
-        return CompaniaAseguradora;
+        return companiaAseguradora;
     }
 
     public void setCompaniaAseguradora(String companiaAseguradora) {
-        CompaniaAseguradora = companiaAseguradora;
+        this.companiaAseguradora = companiaAseguradora;
     }
 
     public String getTelefono() {
-        return Telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
-        Telefono = telefono;
+        this.telefono = telefono;
     }
 
-    public String getDNI_NIE() {
-        return DNI_NIE;
+    public String getDniNie() {
+        return dniNie;
     }
 
-    public void setDNI_NIE(String DNI_NIE) {
-        this.DNI_NIE = DNI_NIE;
+    public void setDniNie(String dniNie) {
+        this.dniNie = dniNie;
     }
 
-    public String getNum_colegiado() {
-        return Num_colegiado;
+    public String getNumColegiado() {
+        return numColegiado;
     }
 
-    public void setNum_colegiado(String num_colegiado) {
-        Num_colegiado = num_colegiado;
+    public void setNumColegiado(String numColegiado) {
+        this.numColegiado = numColegiado;
     }
 
-    public Date getFecha_nacimiento() {
-        return Fecha_nacimiento;
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
-        Fecha_nacimiento = fecha_nacimiento;
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
-
 
 
     public String getTratamiento() {
-        return Tratamiento;
+        return tratamiento;
     }
 
     public void setTratamiento(String tratamiento) {
-        Tratamiento = tratamiento;
+        this.tratamiento = tratamiento;
     }
 
-    public String getId_lista_pacientes() {
-        return id_lista_pacientes;
+    public String getIdListaPacientes() {
+        return idListaPacientes;
     }
 
-    public void setId_lista_pacientes(String id_lista_pacientes) {
-        this.id_lista_pacientes = id_lista_pacientes;
+    public void setIdListaPacientes(String idListaPacientes) {
+        this.idListaPacientes = idListaPacientes;
     }
 
-    public String getId_lista_doctores() {
-        return id_lista_doctores;
+    public String getIdListaDoctores() {
+        return idListaDoctores;
     }
 
-    public void setId_lista_doctores(String id_lista_doctores) {
-        this.id_lista_doctores = id_lista_doctores;
+    public void setIdListaDoctores(String idListaDoctores) {
+        this.idListaDoctores = idListaDoctores;
     }
 
-    public String getId_lista_proximas_consultas() {
-        return id_lista_proximas_consultas;
+    public String getIdListaProximasConsultas() {
+        return idListaProximasConsultas;
     }
 
-    public void setId_lista_proximas_consultas(String id_lista_proximas_consultas) {
-        this.id_lista_proximas_consultas = id_lista_proximas_consultas;
+    public void setIdListaProximasConsultas(String idListaProximasConsultas) {
+        this.idListaProximasConsultas = idListaProximasConsultas;
     }
 
-    public String getId_lista_sintomas() {
-        return id_lista_sintomas;
+    public String getIdListaSintomas() {
+        return idListaSintomas;
     }
 
-    public void setId_lista_sintomas(String id_lista_sintomas) {
-        this.id_lista_sintomas = id_lista_sintomas;
+    public void setIdListaSintomas(String idListaSintomas) {
+        this.idListaSintomas = idListaSintomas;
     }
 
-    public Boolean getEs_doctor() {
-        return es_doctor;
+    public Boolean getEsDoctor() {
+        return esDoctor;
     }
 
-    public void setEs_doctor(Boolean es_doctor) {
-        this.es_doctor = es_doctor;
+    public void setEsDoctor(Boolean esDoctor) {
+        this.esDoctor = esDoctor;
     }
 
-    public Boolean getEs_paciente() {
-        return es_paciente;
+    public Boolean getEsPaciente() {
+        return esPaciente;
     }
 
-    public void setEs_paciente(Boolean es_paciente) {
-        this.es_paciente = es_paciente;
+    public void setEsPaciente(Boolean esPaciente) {
+        this.esPaciente = esPaciente;
     }
 
-    public String getLink_foto_perfil() {
-        return link_foto_perfil;
+    public String getLinkFotoPerfil() {
+        return linkFotoPerfil;
     }
 
-    public void setLink_foto_perfil(String link_foto_perfil) {
-        this.link_foto_perfil = link_foto_perfil;
+    public void setLinkFotoPerfil(String linkFotoPerfil) {
+        this.linkFotoPerfil = linkFotoPerfil;
     }
 
     public String getContrasenia() {
-        return Contrasenia;
+        return contrasenia;
     }
 
     public void setContrasenia(String contrasenia) {
-        Contrasenia = contrasenia;
+        this.contrasenia = contrasenia;
     }
 
-    public void orElseThrow(Object o) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, usuario.id) &&
+                Objects.equals(nombre, usuario.nombre) &&
+                Objects.equals(apellidos, usuario.apellidos) &&
+                Objects.equals(localidad, usuario.localidad) &&
+                Objects.equals(correo, usuario.correo) &&
+                Objects.equals(companiaAseguradora, usuario.companiaAseguradora) &&
+                Objects.equals(telefono, usuario.telefono) &&
+                Objects.equals(dniNie, usuario.dniNie) &&
+                Objects.equals(numColegiado, usuario.numColegiado) &&
+                Objects.equals(fechaNacimiento, usuario.fechaNacimiento) &&
+                Objects.equals(idListaEnfermedades, usuario.idListaEnfermedades) &&
+                Objects.equals(tratamiento, usuario.tratamiento) &&
+                Objects.equals(idListaPacientes, usuario.idListaPacientes) &&
+                Objects.equals(idListaDoctores, usuario.idListaDoctores) &&
+                Objects.equals(idListaProximasConsultas, usuario.idListaProximasConsultas) &&
+                Objects.equals(idListaSintomas, usuario.idListaSintomas) &&
+                Objects.equals(esDoctor, usuario.esDoctor) &&
+                Objects.equals(esPaciente, usuario.esPaciente) &&
+                Objects.equals(linkFotoPerfil, usuario.linkFotoPerfil) &&
+                Objects.equals(contrasenia, usuario.contrasenia);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, idListaEnfermedades, tratamiento, idListaPacientes, idListaDoctores, idListaProximasConsultas, idListaSintomas, esDoctor, esPaciente, linkFotoPerfil, contrasenia);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("\nUsuario");
+        sb.append("\nid=").append(id);
+        sb.append(", nombre='").append(nombre).append("\n");
+        sb.append(", apellidos='").append(apellidos).append("\n");
+        sb.append(", localidad='").append(localidad).append("\n");
+        sb.append(", correo='").append(correo).append("\n");
+        sb.append(", companiaAseguradora='").append(companiaAseguradora).append("\n");
+        sb.append(", telefono='").append(telefono).append("\n");
+        sb.append(", dniNie='").append(dniNie).append("\n");
+        sb.append(", numColegiado='").append(numColegiado).append("\n");
+        sb.append(", fechaNacimiento=").append(fechaNacimiento);
+        sb.append(", idListaEnfermedades='").append(idListaEnfermedades).append("\n");
+        sb.append(", tratamiento='").append(tratamiento).append("\n");
+        sb.append(", idListaPacientes='").append(idListaPacientes).append("\n");
+        sb.append(", idListaDoctores='").append(idListaDoctores).append("\n");
+        sb.append(", idListaProximasConsultas='").append(idListaProximasConsultas).append("\n");
+        sb.append(", idListaSintomas='").append(idListaSintomas).append("\n");
+        sb.append(", esDoctor=").append(esDoctor);
+        sb.append(", esPaciente=").append(esPaciente);
+        sb.append(", linkFotoPerfil='").append(linkFotoPerfil).append("\n");
+        sb.append(", contrasenia='").append(contrasenia).append("\n");
+        sb.append("]");
+        return sb.toString();
     }
 }
