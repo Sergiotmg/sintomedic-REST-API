@@ -1,8 +1,6 @@
 package com.example.sintomedic;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import sun.util.calendar.BaseCalendar;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,30 +22,31 @@ public class Usuario {
     @NotBlank
     private String Apellidos;
     private String Localidad;
-    @NotBlank
-    private String  Correo ;
 
+    private String  Correo ;
+    private String Lugar_consulta;
     private String CompaniaAseguradora;
     private String  Telefono ;
+
     @NotBlank
     private String DNI_NIE;
 
     private String Num_colegiado;
+    @NotBlank
     private Date Fecha_nacimiento;
-
-
 
     @NotBlank
     private String id_lista_enfermedades;
 
     private String Tratamiento ;
 
+    @NotBlank
     private String id_lista_pacientes;
-
+    @NotBlank
     private String id_lista_doctores;
-
+    @NotBlank
     private String id_lista_proximas_consultas;
-
+    @NotBlank
     private String id_lista_sintomas;
     @NotBlank
     private Boolean es_doctor ;
@@ -62,10 +61,20 @@ public class Usuario {
         super();
     }*/
 
+
+
+    //sirve lo de @JSONProperty??
     public Usuario( @JsonProperty("contrasenia")String contrasenia, @JsonProperty("dni_nie") String dni_nie) {
         super();
         this.DNI_NIE = dni_nie;
         this.Contrasenia=contrasenia;
+    }
+    public String getLugar_consulta() {
+        return Lugar_consulta;
+    }
+
+    public void setLugar_consulta(String lugar_consulta) {
+        Lugar_consulta = lugar_consulta;
     }
     public String getId_lista_enfermedades() {
         return id_lista_enfermedades;
@@ -228,6 +237,6 @@ public class Usuario {
         Contrasenia = contrasenia;
     }
 
-    public Object orElseThrow(Object o) {
+    public void orElseThrow(Object o) {
     }
 }

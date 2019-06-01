@@ -11,7 +11,6 @@ import java.util.Optional;
 @Repository
 public interface UsuariosRepositorio extends JpaRepository<Usuario, Integer> {
     public Usuario findById(int id);
-    public Usuario findByIdAndDni(int id,String dni_nie);
     //public Usuario findByDniAndPassword(String dni, String password);
 
    /*FALLA ESA QUERY
