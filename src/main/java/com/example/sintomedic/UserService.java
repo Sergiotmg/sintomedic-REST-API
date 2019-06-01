@@ -26,9 +26,9 @@ public class UserService {
         return (Usuario) userRepository.save(user);
     }
 
-    public void save(List<Usuario> users) {
+    /*public void save(List<Usuario> users) {
         userRepository.save(users);
-    }
+    }*/
 
 
     public Long registerUser(Usuario user) {

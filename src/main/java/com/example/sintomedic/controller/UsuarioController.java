@@ -18,14 +18,14 @@ import java.util.List;
 @RestController
 public class UsuarioController {
 
-    @Autowired
-    private UserService userService;
 
-    UsuariosRepositorio usuariosRepositorio;
-    SintomasRepositorio sintomasRepositorio;
+    //private UserService userService;
+
+    public  UsuariosRepositorio usuariosRepositorio;
+    public SintomasRepositorio sintomasRepositorio;
 
     public UsuarioController(UserService userService) {
-        this.userService = userService;
+       // this.userService = userService;
     }
 
     //PARA USUARIOS
@@ -33,9 +33,9 @@ public class UsuarioController {
 
     @RequestMapping("/api/register")
     @ResponseBody
-    public Long register(@RequestBody Usuario user) {
-        return userService.registerUser(user);
-    }
+    /*public Long register(@RequestBody Usuario user) {
+       return userService.registerUser(user);
+    }*/
 
     // Get All users
 
@@ -151,7 +151,7 @@ public class UsuarioController {
     public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws SintomaNotFoundException {
         Sintoma sintoma = (Sintoma) sintomasRepositorio.findById(id).orElseThrow(() -> new SintomaNotFoundException(id));
 
-        usuariosRepositorio.delete(sintoma);
+        sintomasRepositorio.delete(sintoma);
 
         return ResponseEntity.ok().build();
     }
