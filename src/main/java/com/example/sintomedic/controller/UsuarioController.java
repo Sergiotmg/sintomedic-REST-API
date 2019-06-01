@@ -2,7 +2,6 @@ package com.example.sintomedic.controller;
 
 
 import com.example.sintomedic.Sintoma;
-import com.example.sintomedic.UserService;
 import com.example.sintomedic.Usuario;
 import com.example.sintomedic.exception.SintomaNotFoundException;
 import com.example.sintomedic.exception.UsuarioNotFoundException;
@@ -19,16 +18,11 @@ import java.util.List;
 @RestController
 public class UsuarioController {
 
-
-    //private UserService userService;
     @Autowired
 
     UsuariosRepositorio usuariosRepositorio;
     SintomasRepositorio sintomasRepositorio;
 
-    public UsuarioController(UserService userService) {
-       // this.userService = userService;
-    }
 
     //PARA USUARIOS
     //register
