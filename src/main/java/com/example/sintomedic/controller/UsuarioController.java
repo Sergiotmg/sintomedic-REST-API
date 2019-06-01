@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -20,9 +21,10 @@ public class UsuarioController {
 
 
     //private UserService userService;
+    @Autowired
 
-    public  UsuariosRepositorio usuariosRepositorio;
-    public SintomasRepositorio sintomasRepositorio;
+    UsuariosRepositorio usuariosRepositorio;
+    SintomasRepositorio sintomasRepositorio;
 
     public UsuarioController(UserService userService) {
        // this.userService = userService;
@@ -44,11 +46,11 @@ public class UsuarioController {
         return usuariosRepositorio.findAll();
     }
 
+
     // Get a Single USER
     @GetMapping("/usuarios/{id}")
-    public Usuario getUserById(@PathVariable(value = "id") Long id) throws Throwable {
-        return (Usuario) usuariosRepositorio.findById(id)
-                .orElseThrow(() -> new UsuarioNotFoundException(id));
+    public Usuario getUserById(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
+        return usuariosRepositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
     // Create a new USER/*
@@ -59,10 +61,11 @@ public class UsuarioController {
 
     // Update a USER
     @PutMapping("/usuarios/{id}")
-    public Usuario updateUser(@PathVariable(value = "id") Long id,
-                              @Valid @RequestBody Usuario usuarioDetails) throws Throwable {
+    public Usuario updateUser(@PathVariable(value = "id") int id,
+                              @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
 
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
+        Usuario usuario = (Usuario) usuariosRepositorio.findById(id).
+                orElseThrow(() -> new UsuarioNotFoundException(id));
 
 
 
@@ -94,7 +97,7 @@ public class UsuarioController {
 
     // Delete a USER
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<Usuario> deleteUser(@PathVariable(value = "id") Long id) throws Throwable {
+    public ResponseEntity<Usuario> deleteUser(@PathVariable(value = "id") int id) throws Throwable {
         Usuario usuario = (Usuario) usuariosRepositorio.findById(id).orElseThrow(() -> new UsuarioNotFoundException(id));
 
 
@@ -103,56 +106,5 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
-    //************************ SINTOMAS *****************
 
-    // Get All SINTOMAS
-
-    @GetMapping("/sintomas")
-    public List<Sintoma> getAllSintomas() {
-        return sintomasRepositorio.findAll();
-    }
-
-    // Create a new SINTOMA/*
-    @PostMapping("/sintomas")
-    public Sintoma createSintomas(@Valid @RequestBody Sintoma sintoma) {
-        return sintomasRepositorio.save(sintoma);
-    }
-
-
-    // Get a Single SINTOMA
-    @GetMapping("/sintomas/{id}")
-    public Sintoma getSintomaById(@PathVariable(value = "id") Long id) throws SintomaNotFoundException {
-        return  sintomasRepositorio.findById(id)
-                .orElseThrow(() -> new SintomaNotFoundException(id));
-
-    }
-
-
-
-    // Update a SINTOMA
-    @PutMapping("/sintomas/{id}")
-    public Sintoma updateSintoma(@PathVariable(value = "id") Long id,
-                              @Valid @RequestBody Sintoma sintomaDetails) throws SintomaNotFoundException {
-
-        Sintoma sintoma = sintomasRepositorio.findById(id)
-                .orElseThrow(() -> new SintomaNotFoundException(id));
-
-        sintoma.setDescripcion(sintomaDetails.getDescripcion());
-        // FALTAN EL RESTO!!!!!!!!!!!!
-
-
-        Sintoma updateSintoma = sintomasRepositorio.save(sintoma);
-
-        return updateSintoma;
-    }
-
-    // Delete a SINTOMA
-    @DeleteMapping("/sintomas/{id}")
-    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws SintomaNotFoundException {
-        Sintoma sintoma = (Sintoma) sintomasRepositorio.findById(id).orElseThrow(() -> new SintomaNotFoundException(id));
-
-        sintomasRepositorio.delete(sintoma);
-
-        return ResponseEntity.ok().build();
-    }
 }

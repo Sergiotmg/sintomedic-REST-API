@@ -18,7 +18,6 @@ import java.util.List;
 public class SintomasController {
 
     @Autowired
-    UsuariosRepositorio usuariosRepositorio;
     SintomasRepositorio sintomasRepositorio;
 
 
@@ -40,7 +39,7 @@ public class SintomasController {
 
     // Get a Single SINTOMA
     @GetMapping("/sintomas/{id}")
-    public Sintoma getSintomaById(@PathVariable(value = "id") Long id) throws SintomaNotFoundException {
+    public Sintoma getSintomaById(@PathVariable(value = "id") int id) throws SintomaNotFoundException {
         return  sintomasRepositorio.findById(id)
                 .orElseThrow(() -> new SintomaNotFoundException(id));
 
@@ -50,7 +49,7 @@ public class SintomasController {
 
     // Update a SINTOMA
     @PutMapping("/sintomas/{id}")
-    public Sintoma updateSintoma(@PathVariable(value = "id") Long id,
+    public Sintoma updateSintoma(@PathVariable(value = "id") int id,
                                  @Valid @RequestBody Sintoma sintomaDetails) throws SintomaNotFoundException {
 
         Sintoma sintoma = sintomasRepositorio.findById(id)
@@ -67,11 +66,10 @@ public class SintomasController {
 
     // Delete a SINTOMA
     @DeleteMapping("/sintomas/{id}")
-    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") Long id) throws Throwable {
-        Usuario usuario = (Usuario) usuariosRepositorio.findById(id)
-                .orElseThrow(() -> new UsuarioNotFoundException(id));
+    public ResponseEntity<?> deleteSintoma(@PathVariable(value = "id") int id) throws SintomaNotFoundException {
+        Sintoma sintoma = (Sintoma) sintomasRepositorio.findById(id).orElseThrow(() -> new SintomaNotFoundException(id));
 
-        usuariosRepositorio.delete(usuario);
+        sintomasRepositorio.delete(sintoma);
 
         return ResponseEntity.ok().build();
     }

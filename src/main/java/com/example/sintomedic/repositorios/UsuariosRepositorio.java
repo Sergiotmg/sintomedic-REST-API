@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UsuariosRepositorio extends JpaRepository<Usuario, Long> {
+public interface UsuariosRepositorio extends JpaRepository<Usuario, Integer> {
     public Usuario findByDniAndPassword(String dni, String password);
 
-   /*String get_pacientes_de_un_doctor = "FROM lista_pacientes_de_doctor WHERE id = :id_doctor";
+   String get_pacientes_de_un_doctor = "FROM lista_pacientes_de_doctor WHERE id = :id_doctor";
     @Query(get_pacientes_de_un_doctor)
-    Optional<List<Usuario>> findUsuarioById(int id);*/
+    Optional<Usuario> findById(int id);
 
 
 
