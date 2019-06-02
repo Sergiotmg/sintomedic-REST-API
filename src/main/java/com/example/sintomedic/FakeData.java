@@ -62,7 +62,7 @@ public class FakeData {
         usuario.setApellidos(gen(1));
         usuario.setLocalidad(gen(2));
         usuario.setCorreo(gen(3));
-        usuario.setCompaniaAseguradora(gen(5));
+        usuario.setCompaniaAseguradora(gen(4));
         usuario.setTelefono((gen(5)));
         usuario.setDniNie(gen(6));
         usuario.setNumColegiado(gen(7));
@@ -87,6 +87,6 @@ public class FakeData {
 
 
     private static String gen(final int index) {
-        return NOMBRES_APELLIDOS[SECURE_RANDOM.nextInt(NOMBRES_APELLIDOS.length - 1)][index];
+        return NOMBRES_APELLIDOS[SECURE_RANDOM.nextInt(NOMBRES_APELLIDOS.length)][index];
     }
 }
