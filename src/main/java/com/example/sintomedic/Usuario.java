@@ -48,14 +48,11 @@ public class Usuario {
     //@NotBlank
     private Boolean esDoctor;
 
-    //@NotBlank
-    private Boolean esPaciente;
-
     private String linkFotoPerfil;
     //@NotBlank
     private String contrasenia;
 
-    public Usuario(){
+    public Usuario() {
         super();
     }
 
@@ -202,14 +199,6 @@ public class Usuario {
         this.esDoctor = esDoctor;
     }
 
-    public Boolean getEsPaciente() {
-        return esPaciente;
-    }
-
-    public void setEsPaciente(Boolean esPaciente) {
-        this.esPaciente = esPaciente;
-    }
-
     public String getLinkFotoPerfil() {
         return linkFotoPerfil;
     }
@@ -248,14 +237,13 @@ public class Usuario {
                 Objects.equals(idListaProximasConsultas, usuario.idListaProximasConsultas) &&
                 Objects.equals(idListaSintomas, usuario.idListaSintomas) &&
                 Objects.equals(esDoctor, usuario.esDoctor) &&
-                Objects.equals(esPaciente, usuario.esPaciente) &&
                 Objects.equals(linkFotoPerfil, usuario.linkFotoPerfil) &&
                 Objects.equals(contrasenia, usuario.contrasenia);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, idListaEnfermedades, tratamiento, idListaPacientes, idListaDoctores, idListaProximasConsultas, idListaSintomas, esDoctor, esPaciente, linkFotoPerfil, contrasenia);
+        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, idListaEnfermedades, tratamiento, idListaPacientes, idListaDoctores, idListaProximasConsultas, idListaSintomas, esDoctor, linkFotoPerfil, contrasenia);
     }
 
     @Override
@@ -278,7 +266,6 @@ public class Usuario {
         sb.append(", idListaProximasConsultas='").append(idListaProximasConsultas).append("\n");
         sb.append(", idListaSintomas='").append(idListaSintomas).append("\n");
         sb.append(", esDoctor=").append(esDoctor);
-        sb.append(", esPaciente=").append(esPaciente);
         sb.append(", linkFotoPerfil='").append(linkFotoPerfil).append("\n");
         sb.append(", contrasenia='").append(contrasenia).append("\n");
         sb.append("]");

@@ -3,7 +3,6 @@ package com.example.sintomedic.controller;
 
 import com.example.sintomedic.Usuario;
 import com.example.sintomedic.exception.UsuarioNotFoundException;
-import com.example.sintomedic.repositorios.SintomasRepositorio;
 import com.example.sintomedic.repositorios.UsuariosRepositorio;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -80,7 +79,6 @@ public class UsuarioController {
         usuario.setIdListaProximasConsultas(usuarioDetails.getIdListaProximasConsultas());
         usuario.setIdListaSintomas(usuarioDetails.getIdListaSintomas());
         usuario.setEsDoctor(usuarioDetails.getEsDoctor());
-        usuario.setEsPaciente(usuarioDetails.getEsPaciente());
         usuario.setLinkFotoPerfil(usuarioDetails.getLinkFotoPerfil());
         usuario.setContrasenia(usuarioDetails.getContrasenia());
 
