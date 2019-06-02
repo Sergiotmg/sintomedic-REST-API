@@ -19,17 +19,17 @@ public class FakeData {
     private static final String NOMBRES_APELLIDOS[][] = {
 
             {"sergiotmg", "sergiotmg", "foro", "sergiotmg@gmail.com", "Compania6",
-                    "23141", "5453-46734", "colegiado112", "11/04/1998", "locura", "false", "/img/sergiotmg.jpg",
+                    "23141", "5453-46734", "colegiado112", "11/04/1998", "diazepam", "01","01", "false", "/img/sergiotmg.jpg",
                     "1234"},
 
 
             {"Goku", "Cacaroto", "anime", "goku@megaman.com", "Compania3",
-                    "41454141", "5453-46734", "colegiado112", "12/10/1988", "sinTratamiento", "false", "/img/goku.jpg",
+                    "41454141", "5453-46734", "colegiado112", "12/10/1988", "sinTratamiento", "02","02","false", "/img/goku.jpg",
                     "gokuContraseña"},
 
 
             {"Mega", "Man", "nintento", "megaman@megaman.com", "Compania1",
-                    "41414141", "5453-42434", "colegiado111", "11/11/1975", "sinTratamiento", "false", "/img/megaman.jpg",
+                    "41414141", "5453-42434", "colegiado111", "11/11/1975", "sinTratamiento", "03","03", "false", "/img/megaman.jpg",
                     "megaContraseña"}
 
     };
@@ -71,14 +71,14 @@ public class FakeData {
         }
         usuario.setFechaNacimiento(date);
         //usuario.setIdListaEnfermedades(gen(9));
-        usuario.setTratamiento(gen(9));/*
-        usuario.setIdListaPacientes(gen(11));
-        usuario.setIdListaDoctores(gen(12));
-        usuario.setIdListaProximasConsultas(gen(13));
-        usuario.setIdListaSintomas(gen(14));*/
-        usuario.setEsDoctor(Boolean.parseBoolean(gen(10)));
-        usuario.setLinkFotoPerfil(gen(11));
-        usuario.setContrasenia(gen(12));
+        usuario.setTratamiento(gen(9));
+        usuario.setIdListaPacientes(gen(10));
+        usuario.setIdListaDoctores(gen(11));
+        //usuario.setIdListaProximasConsultas(gen(13));
+        //usuario.setIdListaSintomas(gen(14));
+        usuario.setEsDoctor(Boolean.parseBoolean(gen(12)));
+        usuario.setLinkFotoPerfil(gen(13));
+        usuario.setContrasenia(gen(14));
         return usuario;
     }
 

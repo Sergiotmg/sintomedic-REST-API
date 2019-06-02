@@ -33,6 +33,10 @@ public class Usuario {
     private Date fechaNacimiento;
     private String tratamiento;
 
+    private String idListaPacientes;
+
+    private String idListaDoctores;
+
 
 /*
     private String idListaEnfermedades;
@@ -160,7 +164,7 @@ public class Usuario {
     public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
     }
-    /*
+
 
     public String getIdListaPacientes() {
         return idListaPacientes;
@@ -177,7 +181,7 @@ public class Usuario {
     public void setIdListaDoctores(String idListaDoctores) {
         this.idListaDoctores = idListaDoctores;
     }
-
+/*
     public String getIdListaProximasConsultas() {
         return idListaProximasConsultas;
     }
@@ -261,6 +265,8 @@ public class Usuario {
                 Objects.equals(numColegiado, usuario.numColegiado) &&
                 Objects.equals(fechaNacimiento, usuario.fechaNacimiento) &&
                 Objects.equals(tratamiento, usuario.tratamiento) &&
+                Objects.equals(idListaPacientes, usuario.idListaPacientes) &&
+                Objects.equals(idListaDoctores, usuario.idListaDoctores) &&
                 Objects.equals(esDoctor, usuario.esDoctor) &&
                 Objects.equals(linkFotoPerfil, usuario.linkFotoPerfil) &&
                 Objects.equals(contrasenia, usuario.contrasenia);
@@ -274,7 +280,7 @@ public class Usuario {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento, esDoctor, linkFotoPerfil, contrasenia);
+        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento,idListaPacientes, idListaDoctores, esDoctor, linkFotoPerfil, contrasenia);
     }
 //VERSION CON ID
     /*
@@ -318,6 +324,8 @@ public class Usuario {
         sb.append(", numColegiado='").append(numColegiado).append("\n");
         sb.append(", fechaNacimiento=").append(fechaNacimiento);
         sb.append(", tratamiento='").append(tratamiento).append("\n");
+        sb.append(", idListaPacientes='").append(idListaPacientes).append("\n");
+        sb.append(", idListaDoctores='").append(idListaDoctores).append("\n");
         sb.append(", esDoctor=").append(esDoctor);
         sb.append(", linkFotoPerfil='").append(linkFotoPerfil).append("\n");
         sb.append(", contrasenia='").append(contrasenia).append("\n");
