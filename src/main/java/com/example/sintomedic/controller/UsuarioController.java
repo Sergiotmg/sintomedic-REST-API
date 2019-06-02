@@ -74,10 +74,11 @@ public class UsuarioController {
         usuario.setNumColegiado(usuarioDetails.getNumColegiado());
         usuario.setFechaNacimiento(usuarioDetails.getFechaNacimiento());
         usuario.setTratamiento(usuarioDetails.getTratamiento());
+        /*
         usuario.setIdListaDoctores(usuarioDetails.getIdListaDoctores());
         usuario.setIdListaPacientes(usuarioDetails.getIdListaPacientes());
         usuario.setIdListaProximasConsultas(usuarioDetails.getIdListaProximasConsultas());
-        usuario.setIdListaSintomas(usuarioDetails.getIdListaSintomas());
+        usuario.setIdListaSintomas(usuarioDetails.getIdListaSintomas());*/
         usuario.setEsDoctor(usuarioDetails.getEsDoctor());
         usuario.setLinkFotoPerfil(usuarioDetails.getLinkFotoPerfil());
         usuario.setContrasenia(usuarioDetails.getContrasenia());

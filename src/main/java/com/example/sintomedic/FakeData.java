@@ -19,20 +19,17 @@ public class FakeData {
     private static final String NOMBRES_APELLIDOS[][] = {
 
             {"sergiotmg", "sergiotmg", "foro", "sergiotmg@gmail.com", "Compania6",
-                    "23141", "5453-46734", "colegiado112", "11/04/1998", "id-05", "locura", "id-pacien07"
-                    , "id-doctore06", "idProximaConsul08", "idSintoma-02", "false", "/img/sergiotmg.jpg",
+                    "23141", "5453-46734", "colegiado112", "11/04/1998", "locura", "false", "/img/sergiotmg.jpg",
                     "1234"},
 
 
             {"Goku", "Cacaroto", "anime", "goku@megaman.com", "Compania3",
-                    "41454141", "5453-46734", "colegiado112", "12/10/1988", "id-04", "sinTratamiento", "id-pacien05"
-                    , "id-doctore03", "idProximaConsul05", "idSintoma-02", "false", "/img/goku.jpg",
+                    "41454141", "5453-46734", "colegiado112", "12/10/1988", "sinTratamiento", "false", "/img/goku.jpg",
                     "gokuContraseña"},
 
 
             {"Mega", "Man", "nintento", "megaman@megaman.com", "Compania1",
-                    "41414141", "5453-42434", "colegiado111", "11/11/1975", "id-01", "sinTratamiento", "id-pacien01"
-                    , "id-doctore01", "idProximaConsul01", "idSintoma-01", "false", "/img/megaman.jpg",
+                    "41414141", "5453-42434", "colegiado111", "11/11/1975", "sinTratamiento", "false", "/img/megaman.jpg",
                     "megaContraseña"}
 
     };
@@ -73,15 +70,15 @@ public class FakeData {
             e.printStackTrace();
         }
         usuario.setFechaNacimiento(date);
-        usuario.setIdListaEnfermedades(gen(9));
-        usuario.setTratamiento(gen(10));
+        //usuario.setIdListaEnfermedades(gen(9));
+        usuario.setTratamiento(gen(9));/*
         usuario.setIdListaPacientes(gen(11));
         usuario.setIdListaDoctores(gen(12));
         usuario.setIdListaProximasConsultas(gen(13));
-        usuario.setIdListaSintomas(gen(14));
-        usuario.setEsDoctor(Boolean.parseBoolean(gen(15)));
-        usuario.setLinkFotoPerfil(gen(16));
-        usuario.setContrasenia(gen(17));
+        usuario.setIdListaSintomas(gen(14));*/
+        usuario.setEsDoctor(Boolean.parseBoolean(gen(10)));
+        usuario.setLinkFotoPerfil(gen(11));
+        usuario.setContrasenia(gen(12));
         return usuario;
     }
 
