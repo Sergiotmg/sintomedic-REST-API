@@ -20,8 +20,9 @@ public class Application {
     @Bean
     CommandLineRunner iniciar(final UsuariosRepositorio usuariosRepositorio) {
         return param -> {
-            IntStream.range(1,FakeData.getUsuarioList().size())
-                    .mapToObj(numero -> FakeData.getUsuarioList().get(numero))
+            final FakeData fakeData = FakeData.get();
+            IntStream.range(1,fakeData.getUsuarioList().size())
+                    .mapToObj(numero -> fakeData.getUsuarioList().get(numero))
                     .map(usuariosRepositorio::save)
                     .forEach(System.out::println);
         };
