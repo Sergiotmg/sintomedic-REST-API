@@ -18,17 +18,17 @@ public class FakeData {
 
     private static final String NOMBRES_APELLIDOS[][] = {
 
-            {"sergiotmg", "sergiotmg", "foro", "sergiotmg@gmail.com", "Compania6",
+            {"sergiotmg", "sergiotmg", "VLC","A", "sergiotmg@gmail.com", "Compania6",
                     "23141", "5453-46734", "colegiado112", "11/04/1998", "diazepam", "01","01", "false", "/img/sergiotmg.jpg",
                     "1234"},
 
 
-            {"Goku", "Cacaroto", "anime", "goku@megaman.com", "Compania3",
+            {"Goku", "Cacaroto", "MIS","B", "goku@megaman.com", "Compania3",
                     "41454141", "5453-46734", "colegiado112", "12/10/1988", "sinTratamiento", "02","02","false", "/img/goku.jpg",
                     "gokuContraseña"},
 
 
-            {"Mega", "Man", "nintento", "megaman@megaman.com", "Compania1",
+            {"Mega", "Man", "MAD","C", "megaman@megaman.com", "Compania1",
                     "41414141", "5453-42434", "colegiado111", "11/11/1975", "sinTratamiento", "03","03", "false", "/img/megaman.jpg",
                     "megaContraseña"}
 
@@ -58,27 +58,28 @@ public class FakeData {
         usuario.setNombre(gen(0));
         usuario.setApellidos(gen(1));
         usuario.setLocalidad(gen(2));
-        usuario.setCorreo(gen(3));
-        usuario.setCompaniaAseguradora(gen(4));
-        usuario.setTelefono((gen(5)));
-        usuario.setDniNie(gen(6));
-        usuario.setNumColegiado(gen(7));
+        usuario.setCentro(gen(3));
+        usuario.setCorreo(gen(4));
+        usuario.setCompaniaAseguradora(gen(5));
+        usuario.setTelefono((gen(6)));
+        usuario.setDniNie(gen(7));
+        usuario.setNumColegiado(gen(8));
         Date date = null;
         try {
-            date = new SimpleDateFormat("dd/MM/yyyy").parse(gen(8));
+            date = new SimpleDateFormat("dd/MM/yyyy").parse(gen(9));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         usuario.setFechaNacimiento(date);
         //usuario.setIdListaEnfermedades(gen(9));
-        usuario.setTratamiento(gen(9));
-        usuario.setIdListaPacientes(gen(10));
-        usuario.setIdListaDoctores(gen(11));
+        usuario.setTratamiento(gen(10));
+        usuario.setIdListaPacientes(gen(11));
+        usuario.setIdListaDoctores(gen(12));
         //usuario.setIdListaProximasConsultas(gen(13));
         //usuario.setIdListaSintomas(gen(14));
-        usuario.setEsDoctor(Boolean.parseBoolean(gen(12)));
-        usuario.setLinkFotoPerfil(gen(13));
-        usuario.setContrasenia(gen(14));
+        usuario.setEsDoctor(Boolean.parseBoolean(gen(13)));
+        usuario.setLinkFotoPerfil(gen(14));
+        usuario.setContrasenia(gen(15));
         return usuario;
     }
 

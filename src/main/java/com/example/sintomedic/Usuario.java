@@ -19,6 +19,7 @@ public class Usuario {
     @NotBlank
     private String apellidos;
     private String localidad;
+    private String centro;
 
     @NotBlank
     private String correo;
@@ -71,6 +72,14 @@ public class Usuario {
     public void setIdListaEnfermedades(String idListaEnfermedades) {
         this.idListaEnfermedades = idListaEnfermedades;
     }*/
+
+    public String getCentro() {
+        return centro;
+    }
+
+    public void setCentro(String centro) {
+        this.centro = centro;
+    }
 
     public Long getId() {
         return id;
@@ -248,37 +257,34 @@ public class Usuario {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Usuario)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) &&
-                Objects.equals(nombre, usuario.nombre) &&
-                Objects.equals(apellidos, usuario.apellidos) &&
+        return id.equals(usuario.id) &&
+                nombre.equals(usuario.nombre) &&
+                apellidos.equals(usuario.apellidos) &&
                 Objects.equals(localidad, usuario.localidad) &&
+                Objects.equals(centro, usuario.centro) &&
                 Objects.equals(correo, usuario.correo) &&
                 Objects.equals(companiaAseguradora, usuario.companiaAseguradora) &&
                 Objects.equals(telefono, usuario.telefono) &&
-                Objects.equals(dniNie, usuario.dniNie) &&
+                dniNie.equals(usuario.dniNie) &&
                 Objects.equals(numColegiado, usuario.numColegiado) &&
                 Objects.equals(fechaNacimiento, usuario.fechaNacimiento) &&
                 Objects.equals(tratamiento, usuario.tratamiento) &&
-                Objects.equals(idListaPacientes, usuario.idListaPacientes) &&
-                Objects.equals(idListaDoctores, usuario.idListaDoctores) &&
-                Objects.equals(esDoctor, usuario.esDoctor) &&
+                idListaPacientes.equals(usuario.idListaPacientes) &&
+                idListaDoctores.equals(usuario.idListaDoctores) &&
+                esDoctor.equals(usuario.esDoctor) &&
                 Objects.equals(linkFotoPerfil, usuario.linkFotoPerfil) &&
-                Objects.equals(contrasenia, usuario.contrasenia);
+                contrasenia.equals(usuario.contrasenia);
     }
-
-    //VERSION CON ID
-    /*@Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, idListaEnfermedades, tratamiento, idListaPacientes, idListaDoctores, idListaProximasConsultas, idListaSintomas, esDoctor, linkFotoPerfil, contrasenia);
-    }*/
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento,idListaPacientes, idListaDoctores, esDoctor, linkFotoPerfil, contrasenia);
+        return Objects.hash(id, nombre, apellidos, localidad, centro, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento, idListaPacientes, idListaDoctores, esDoctor, linkFotoPerfil, contrasenia);
     }
-//VERSION CON ID
+
+
+    //VERSION CON ID
     /*
     @Override
     public String toString() {
@@ -308,24 +314,24 @@ public class Usuario {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("\nUsuario");
-        sb.append("\nid=").append(id);
-        sb.append(", nombre='").append(nombre).append("\n");
-        sb.append(", apellidos='").append(apellidos).append("\n");
-        sb.append(", localidad='").append(localidad).append("\n");
-        sb.append(", correo='").append(correo).append("\n");
-        sb.append(", companiaAseguradora='").append(companiaAseguradora).append("\n");
-        sb.append(", telefono='").append(telefono).append("\n");
-        sb.append(", dniNie='").append(dniNie).append("\n");
-        sb.append(", numColegiado='").append(numColegiado).append("\n");
-        sb.append(", fechaNacimiento=").append(fechaNacimiento);
-        sb.append(", tratamiento='").append(tratamiento).append("\n");
-        sb.append(", idListaPacientes='").append(idListaPacientes).append("\n");
-        sb.append(", idListaDoctores='").append(idListaDoctores).append("\n");
-        sb.append(", esDoctor=").append(esDoctor);
-        sb.append(", linkFotoPerfil='").append(linkFotoPerfil).append("\n");
-        sb.append(", contrasenia='").append(contrasenia).append("\n");
-        sb.append("]");
-        return sb.toString();
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", localidad='" + localidad + '\'' +
+                ", centro='" + centro + '\'' +
+                ", correo='" + correo + '\'' +
+                ", companiaAseguradora='" + companiaAseguradora + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", dniNie='" + dniNie + '\'' +
+                ", numColegiado='" + numColegiado + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", tratamiento='" + tratamiento + '\'' +
+                ", idListaPacientes='" + idListaPacientes + '\'' +
+                ", idListaDoctores='" + idListaDoctores + '\'' +
+                ", esDoctor=" + esDoctor +
+                ", linkFotoPerfil='" + linkFotoPerfil + '\'' +
+                ", contrasenia='" + contrasenia + '\'' +
+                '}';
     }
 }
