@@ -24,8 +24,8 @@ public class Sintoma {
     @NotBlank
     private Date fechaHora;
     private float temperatura;
-    private int presionArterial;
-    private int pulso;
+    private float presionArterial;
+    private String pulso;
 
     public Sintoma() {
         super();
@@ -87,35 +87,35 @@ public class Sintoma {
         this.temperatura = temperatura;
     }
 
-    public int getPresionArterial() {
+    public float getPresionArterial() {
         return presionArterial;
     }
 
-    public void setPresionArterial(int presionArterial) {
+    public void setPresionArterial(float presionArterial) {
         this.presionArterial = presionArterial;
     }
 
-    public int getPulso() {
+    public String  getPulso() {
         return pulso;
     }
 
-    public void setPulso(int pulso) {
+    public void setPulso(String pulso) {
         this.pulso = pulso;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Sintoma)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Sintoma sintoma = (Sintoma) o;
         return idPaciente == sintoma.idPaciente &&
                 idDoctorEnviado == sintoma.idDoctorEnviado &&
                 Float.compare(sintoma.temperatura, temperatura) == 0 &&
-                presionArterial == sintoma.presionArterial &&
-                pulso == sintoma.pulso &&
-                Objects.equals(id, sintoma.id) &&
-                Objects.equals(descripcion, sintoma.descripcion) &&
-                Objects.equals(fechaHora, sintoma.fechaHora);
+                Float.compare(sintoma.presionArterial, presionArterial) == 0 &&
+                id.equals(sintoma.id) &&
+                descripcion.equals(sintoma.descripcion) &&
+                Objects.equals(fechaHora, sintoma.fechaHora) &&
+                Objects.equals(pulso, sintoma.pulso);
     }
 
     @Override
@@ -125,16 +125,15 @@ public class Sintoma {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("\nSintoma");
-        sb.append("\nid=").append(id);
-        sb.append(", descripcion='").append(descripcion).append("\n");
-        sb.append(", idPaciente=").append(idPaciente);
-        sb.append(", idDoctorEnviado=").append(idDoctorEnviado);
-        sb.append(", fechaHora=").append(fechaHora);
-        sb.append(", temperatura=").append(temperatura);
-        sb.append(", presionArterial=").append(presionArterial);
-        sb.append(", pulso=").append(pulso);
-        sb.append("]");
-        return sb.toString();
+        return "Sintoma{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", idPaciente=" + idPaciente +
+                ", idDoctorEnviado=" + idDoctorEnviado +
+                ", fechaHora=" + fechaHora +
+                ", temperatura=" + temperatura +
+                ", presionArterial=" + presionArterial +
+                ", pulso='" + pulso + '\'' +
+                '}';
     }
 }

@@ -42,10 +42,6 @@ public class Usuario {
     private String idListaEnfermedades;
 
 
-    private String idListaPacientes;
-
-    private String idListaDoctores;
-
     private String idListaProximasConsultas;
 
     private String idListaSintomas;*/
