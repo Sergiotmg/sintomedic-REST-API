@@ -3,7 +3,7 @@ package com.example.sintomedic.exception;
 import java.util.function.Supplier;
 
 public class UsuarioNotFoundException extends Exception implements Supplier {
-    public UsuarioNotFoundException(int id) {
+    public UsuarioNotFoundException(Long id) {
         super(String.format("Usuario con id : '%s' no encontrado", id));
     }
 

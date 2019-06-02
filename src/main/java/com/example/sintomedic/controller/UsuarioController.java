@@ -43,7 +43,7 @@ public class UsuarioController {
     // Get a Single USER
     //@GetMapping("/usuarios/{id}")
     @GetMapping(path = {"/{id}"})
-    public Usuario getUserById(@PathVariable(value = "id") int id) throws UsuarioNotFoundException {
+    public Usuario getUserById(@PathVariable(value = "id") long id) throws UsuarioNotFoundException {
         return usuariosRepositorio.findById(id)
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
@@ -56,7 +56,7 @@ public class UsuarioController {
 
     // Update a USER
     @PutMapping("/usuarios/{id}")
-    public Usuario updateUser(@PathVariable(value = "id") int id,
+    public Usuario updateUser(@PathVariable(value = "id") Long id,
                               @Valid @RequestBody Usuario usuarioDetails) throws UsuarioNotFoundException {
 
         Usuario usuario = usuariosRepositorio.findById(id).
@@ -90,7 +90,7 @@ public class UsuarioController {
 
     // Delete a USER
     @DeleteMapping("/usuarios/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") int id) throws Throwable {
+    public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id) throws Throwable {
         return usuariosRepositorio.findById(id)
                 .map(borrar -> {
                     usuariosRepositorio.deleteById(id);
