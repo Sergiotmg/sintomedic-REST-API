@@ -23,7 +23,8 @@ public class Sintoma {
     @NotBlank
     private Date fechaHora;
     private float temperatura;
-    private float presionArterial;
+    private float presionArterialAlta;
+    private float presionArterialBaja;
     private String pulso;
 
     public Sintoma() {
@@ -35,6 +36,22 @@ public class Sintoma {
         this.descripcion = descripcion;
         this.idPaciente = idPaciente;
 
+    }
+
+    public float getPresionArterialAlta() {
+        return presionArterialAlta;
+    }
+
+    public void setPresionArterialAlta(float presionArterialAlta) {
+        this.presionArterialAlta = presionArterialAlta;
+    }
+
+    public float getPresionArterialBaja() {
+        return presionArterialBaja;
+    }
+
+    public void setPresionArterialBaja(float presionArterialBaja) {
+        this.presionArterialBaja = presionArterialBaja;
     }
 
     public Long getId() {
@@ -79,13 +96,7 @@ public class Sintoma {
         this.temperatura = temperatura;
     }
 
-    public float getPresionArterial() {
-        return presionArterial;
-    }
 
-    public void setPresionArterial(float presionArterial) {
-        this.presionArterial = presionArterial;
-    }
 
     public String  getPulso() {
         return pulso;
@@ -101,29 +112,31 @@ public class Sintoma {
         if (o == null || getClass() != o.getClass()) return false;
         Sintoma sintoma = (Sintoma) o;
         return idPaciente == sintoma.idPaciente &&
-
                 Float.compare(sintoma.temperatura, temperatura) == 0 &&
-                Float.compare(sintoma.presionArterial, presionArterial) == 0 &&
-                id.equals(sintoma.id) &&
-                descripcion.equals(sintoma.descripcion) &&
+                Float.compare(sintoma.presionArterialAlta, presionArterialAlta) == 0 &&
+                Float.compare(sintoma.presionArterialBaja, presionArterialBaja) == 0 &&
+                Objects.equals(id, sintoma.id) &&
+                Objects.equals(descripcion, sintoma.descripcion) &&
                 Objects.equals(fechaHora, sintoma.fechaHora) &&
                 Objects.equals(pulso, sintoma.pulso);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descripcion, idPaciente, fechaHora, temperatura, presionArterial, pulso);
+        return Objects.hash(id, descripcion, idPaciente, fechaHora, temperatura, presionArterialAlta, presionArterialBaja, pulso);
     }
 
     @Override
-    public String toString() {
+    public String
+    toString() {
         return "Sintoma{" +
                 "id=" + id +
                 ", descripcion='" + descripcion + '\'' +
                 ", idPaciente=" + idPaciente +
                 ", fechaHora=" + fechaHora +
                 ", temperatura=" + temperatura +
-                ", presionArterial=" + presionArterial +
+                ", presionArterialAlta=" + presionArterialAlta +
+                ", presionArterialBaja=" + presionArterialBaja +
                 ", pulso='" + pulso + '\'' +
                 '}';
     }
