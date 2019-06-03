@@ -1,9 +1,19 @@
 package com.example.sintomedic;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
-
+@Entity
+@Table(name = "lista_pacientes")
 public class ListaPacientes {
+    @Id
+    @GeneratedValue
     private int id;
+    @NotBlank
+    private int  	id_doctor;
     private int  	IdPaciente1;
     private int  	IdPaciente2;
     private int  	IdPaciente3;
@@ -14,11 +24,20 @@ public class ListaPacientes {
     private int  	IdPaciente8;
     private int  	IdPaciente9;
     private int  	IdPaciente10;
+
     public ListaPacientes() {
     }
 
-    public ListaPacientes(int id) {
-        this.id = id;
+    public ListaPacientes(int id_doctor) {
+        this.id_doctor = id_doctor;
+    }
+
+    public int getId_doctor() {
+        return id_doctor;
+    }
+
+    public void setId_doctor(int id_doctor) {
+        this.id_doctor = id_doctor;
     }
 
     public int getId() {
@@ -115,6 +134,7 @@ public class ListaPacientes {
         if (o == null || getClass() != o.getClass()) return false;
         ListaPacientes that = (ListaPacientes) o;
         return id == that.id &&
+                id_doctor == that.id_doctor &&
                 IdPaciente1 == that.IdPaciente1 &&
                 IdPaciente2 == that.IdPaciente2 &&
                 IdPaciente3 == that.IdPaciente3 &&
@@ -129,13 +149,14 @@ public class ListaPacientes {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, IdPaciente1, IdPaciente2, IdPaciente3, IdPaciente4, IdPaciente5, IdPaciente6, IdPaciente7, IdPaciente8, IdPaciente9, IdPaciente10);
+        return Objects.hash(id, id_doctor, IdPaciente1, IdPaciente2, IdPaciente3, IdPaciente4, IdPaciente5, IdPaciente6, IdPaciente7, IdPaciente8, IdPaciente9, IdPaciente10);
     }
 
     @Override
     public String toString() {
         return "ListaPacientes{" +
                 "id=" + id +
+                ", id_doctor=" + id_doctor +
                 ", IdPaciente1=" + IdPaciente1 +
                 ", IdPaciente2=" + IdPaciente2 +
                 ", IdPaciente3=" + IdPaciente3 +

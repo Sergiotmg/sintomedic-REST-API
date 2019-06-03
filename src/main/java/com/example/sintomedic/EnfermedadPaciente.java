@@ -1,15 +1,29 @@
+package com.example.sintomedic;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.Objects;
-
+@Entity
+@Table(name = "enfermedad_de_paciente")
 public class EnfermedadPaciente {
+
+    @Id
+    @GeneratedValue
     private  int id;
+    @NotBlank
     private String Nombre;
+
     private String Descripcion;
     private Date fecha_inicio;
     private Date fecha_fin;
+    @NotBlank
     private  int id_usuario;
 
-    public EnfermedadPaciente(int id_usuario) {
+    public EnfermedadPaciente(@NotBlank int id_usuario) {
         this.id_usuario = id_usuario;
     }
 
