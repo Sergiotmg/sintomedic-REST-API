@@ -37,19 +37,6 @@ public class Usuario {
 
     private String idListaDoctores;
 
-
-/*
-    private String idListaEnfermedades;
-
-
-    private String idListaPacientes;
-
-    private String idListaDoctores;
-
-    private String idListaProximasConsultas;
-
-    private String idListaSintomas;*/
-
     //@NotBlank
     private Boolean esDoctor;
 
@@ -181,22 +168,6 @@ public class Usuario {
     public void setIdListaDoctores(String idListaDoctores) {
         this.idListaDoctores = idListaDoctores;
     }
-/*
-    public String getIdListaProximasConsultas() {
-        return idListaProximasConsultas;
-    }
-
-    public void setIdListaProximasConsultas(String idListaProximasConsultas) {
-        this.idListaProximasConsultas = idListaProximasConsultas;
-    }
-
-    public String getIdListaSintomas() {
-        return idListaSintomas;
-    }
-
-    public void setIdListaSintomas(String idListaSintomas) {
-        this.idListaSintomas = idListaSintomas;
-    }*/
 
     public Boolean getEsDoctor() {
         return esDoctor;
@@ -221,33 +192,8 @@ public class Usuario {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    //VERSION CON ID S
-    /*
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Usuario)) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) &&
-                Objects.equals(nombre, usuario.nombre) &&
-                Objects.equals(apellidos, usuario.apellidos) &&
-                Objects.equals(localidad, usuario.localidad) &&
-                Objects.equals(correo, usuario.correo) &&
-                Objects.equals(companiaAseguradora, usuario.companiaAseguradora) &&
-                Objects.equals(telefono, usuario.telefono) &&
-                Objects.equals(dniNie, usuario.dniNie) &&
-                Objects.equals(numColegiado, usuario.numColegiado) &&
-                Objects.equals(fechaNacimiento, usuario.fechaNacimiento) &&
-                Objects.equals(idListaEnfermedades, usuario.idListaEnfermedades) &&
-                Objects.equals(tratamiento, usuario.tratamiento) &&
-                Objects.equals(idListaPacientes, usuario.idListaPacientes) &&
-                Objects.equals(idListaDoctores, usuario.idListaDoctores) &&
-                Objects.equals(idListaProximasConsultas, usuario.idListaProximasConsultas) &&
-                Objects.equals(idListaSintomas, usuario.idListaSintomas) &&
-                Objects.equals(esDoctor, usuario.esDoctor) &&
-                Objects.equals(linkFotoPerfil, usuario.linkFotoPerfil) &&
-                Objects.equals(contrasenia, usuario.contrasenia);
-    }*/
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -272,43 +218,10 @@ public class Usuario {
                 Objects.equals(contrasenia, usuario.contrasenia);
     }
 
-    //VERSION CON ID
-    /*@Override
-    public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, idListaEnfermedades, tratamiento, idListaPacientes, idListaDoctores, idListaProximasConsultas, idListaSintomas, esDoctor, linkFotoPerfil, contrasenia);
-    }*/
-
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento,idListaPacientes, idListaDoctores, esDoctor, linkFotoPerfil, contrasenia);
+        return Objects.hash(id, nombre, apellidos, localidad, correo, companiaAseguradora, telefono, dniNie, numColegiado, fechaNacimiento, tratamiento, idListaPacientes, idListaDoctores, esDoctor, linkFotoPerfil, contrasenia);
     }
-//VERSION CON ID
-    /*
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("\nUsuario");
-        sb.append("\nid=").append(id);
-        sb.append(", nombre='").append(nombre).append("\n");
-        sb.append(", apellidos='").append(apellidos).append("\n");
-        sb.append(", localidad='").append(localidad).append("\n");
-        sb.append(", correo='").append(correo).append("\n");
-        sb.append(", companiaAseguradora='").append(companiaAseguradora).append("\n");
-        sb.append(", telefono='").append(telefono).append("\n");
-        sb.append(", dniNie='").append(dniNie).append("\n");
-        sb.append(", numColegiado='").append(numColegiado).append("\n");
-        sb.append(", fechaNacimiento=").append(fechaNacimiento);
-        sb.append(", idListaEnfermedades='").append(idListaEnfermedades).append("\n");
-        sb.append(", tratamiento='").append(tratamiento).append("\n");
-        sb.append(", idListaPacientes='").append(idListaPacientes).append("\n");
-        sb.append(", idListaDoctores='").append(idListaDoctores).append("\n");
-        sb.append(", idListaProximasConsultas='").append(idListaProximasConsultas).append("\n");
-        sb.append(", idListaSintomas='").append(idListaSintomas).append("\n");
-        sb.append(", esDoctor=").append(esDoctor);
-        sb.append(", linkFotoPerfil='").append(linkFotoPerfil).append("\n");
-        sb.append(", contrasenia='").append(contrasenia).append("\n");
-        sb.append("]");
-        return sb.toString();
-    }*/
 
     @Override
     public String toString() {

@@ -20,7 +20,6 @@ public class Application {
     @Bean
     CommandLineRunner iniciar(final UsuariosRepositorio usuariosRepositorio) {
         return param -> {
-            usuariosRepositorio.deleteAll();
             final FakeData fakeData = FakeData.get();
             IntStream.range(0,fakeData.getUsuarioList().size())
                     .mapToObj(numero -> fakeData.getUsuarioList().get(numero))

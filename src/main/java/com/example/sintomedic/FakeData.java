@@ -70,12 +70,9 @@ public class FakeData {
             e.printStackTrace();
         }
         usuario.setFechaNacimiento(date);
-        //usuario.setIdListaEnfermedades(gen(9));
         usuario.setTratamiento(gen(9));
         usuario.setIdListaPacientes(gen(10));
         usuario.setIdListaDoctores(gen(11));
-        //usuario.setIdListaProximasConsultas(gen(13));
-        //usuario.setIdListaSintomas(gen(14));
         usuario.setEsDoctor(Boolean.parseBoolean(gen(12)));
         usuario.setLinkFotoPerfil(gen(13));
         usuario.setContrasenia(gen(14));
