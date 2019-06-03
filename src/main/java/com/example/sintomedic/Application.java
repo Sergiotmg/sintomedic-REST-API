@@ -17,7 +17,7 @@ public class Application {
 
     }
 
-    @Bean
+    //@Bean
     CommandLineRunner iniciar(final UsuariosRepositorio usuariosRepositorio) {
         return param -> {
             usuariosRepositorio.deleteAll();

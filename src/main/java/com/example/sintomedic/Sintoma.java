@@ -19,8 +19,7 @@ public class Sintoma {
     private String descripcion;
     @NotBlank
     private int idPaciente;
-    @NotBlank
-    private int idDoctorEnviado;
+
     @NotBlank
     private Date fechaHora;
     private float temperatura;
@@ -31,12 +30,11 @@ public class Sintoma {
         super();
     }
 
-    public Sintoma(@NotBlank String descripcion, @NotBlank int idPaciente, @NotBlank int idDoctorEnviado, @NotBlank Date fechaHora) {
+    public Sintoma(@NotBlank String descripcion, @NotBlank int idPaciente) {
         super();
         this.descripcion = descripcion;
         this.idPaciente = idPaciente;
-        this.idDoctorEnviado = idDoctorEnviado;
-        this.fechaHora = fechaHora;
+
     }
 
     public Long getId() {
@@ -63,13 +61,7 @@ public class Sintoma {
         this.idPaciente = idPaciente;
     }
 
-    public int getIdDoctorEnviado() {
-        return idDoctorEnviado;
-    }
 
-    public void setIdDoctorEnviado(int idDoctorEnviado) {
-        this.idDoctorEnviado = idDoctorEnviado;
-    }
 
     public Date getFechaHora() {
         return fechaHora;
@@ -109,7 +101,7 @@ public class Sintoma {
         if (o == null || getClass() != o.getClass()) return false;
         Sintoma sintoma = (Sintoma) o;
         return idPaciente == sintoma.idPaciente &&
-                idDoctorEnviado == sintoma.idDoctorEnviado &&
+
                 Float.compare(sintoma.temperatura, temperatura) == 0 &&
                 Float.compare(sintoma.presionArterial, presionArterial) == 0 &&
                 id.equals(sintoma.id) &&
@@ -120,7 +112,7 @@ public class Sintoma {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descripcion, idPaciente, idDoctorEnviado, fechaHora, temperatura, presionArterial, pulso);
+        return Objects.hash(id, descripcion, idPaciente, fechaHora, temperatura, presionArterial, pulso);
     }
 
     @Override
@@ -129,7 +121,6 @@ public class Sintoma {
                 "id=" + id +
                 ", descripcion='" + descripcion + '\'' +
                 ", idPaciente=" + idPaciente +
-                ", idDoctorEnviado=" + idDoctorEnviado +
                 ", fechaHora=" + fechaHora +
                 ", temperatura=" + temperatura +
                 ", presionArterial=" + presionArterial +

@@ -33,10 +33,8 @@ public class Usuario {
     private String numColegiado;
     private Date fechaNacimiento;
     private String tratamiento;
-
     private String idListaPacientes;
-
-    private String idListaDoctores;
+        private String idListaDoctores;
 
 
 /*
