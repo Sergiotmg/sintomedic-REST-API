@@ -19,11 +19,7 @@ public class ListaPacientes {
     private int  	IdPaciente3;
     private int  	IdPaciente4;
     private int  	IdPaciente5;
-    private int  	IdPaciente6;
-    private int  	IdPaciente7;
-    private int  	IdPaciente8;
-    private int  	IdPaciente9;
-    private int  	IdPaciente10;
+
 
     public ListaPacientes() {
     }
@@ -88,46 +84,6 @@ public class ListaPacientes {
         IdPaciente5 = idPaciente5;
     }
 
-    public int getIdPaciente6() {
-        return IdPaciente6;
-    }
-
-    public void setIdPaciente6(int idPaciente6) {
-        IdPaciente6 = idPaciente6;
-    }
-
-    public int getIdPaciente7() {
-        return IdPaciente7;
-    }
-
-    public void setIdPaciente7(int idPaciente7) {
-        IdPaciente7 = idPaciente7;
-    }
-
-    public int getIdPaciente8() {
-        return IdPaciente8;
-    }
-
-    public void setIdPaciente8(int idPaciente8) {
-        IdPaciente8 = idPaciente8;
-    }
-
-    public int getIdPaciente9() {
-        return IdPaciente9;
-    }
-
-    public void setIdPaciente9(int idPaciente9) {
-        IdPaciente9 = idPaciente9;
-    }
-
-    public int getIdPaciente10() {
-        return IdPaciente10;
-    }
-
-    public void setIdPaciente10(int idPaciente10) {
-        IdPaciente10 = idPaciente10;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -139,17 +95,12 @@ public class ListaPacientes {
                 IdPaciente2 == that.IdPaciente2 &&
                 IdPaciente3 == that.IdPaciente3 &&
                 IdPaciente4 == that.IdPaciente4 &&
-                IdPaciente5 == that.IdPaciente5 &&
-                IdPaciente6 == that.IdPaciente6 &&
-                IdPaciente7 == that.IdPaciente7 &&
-                IdPaciente8 == that.IdPaciente8 &&
-                IdPaciente9 == that.IdPaciente9 &&
-                IdPaciente10 == that.IdPaciente10;
+                IdPaciente5 == that.IdPaciente5;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, id_doctor, IdPaciente1, IdPaciente2, IdPaciente3, IdPaciente4, IdPaciente5, IdPaciente6, IdPaciente7, IdPaciente8, IdPaciente9, IdPaciente10);
+        return Objects.hash(id, id_doctor, IdPaciente1, IdPaciente2, IdPaciente3, IdPaciente4, IdPaciente5);
     }
 
     @Override
@@ -162,11 +113,6 @@ public class ListaPacientes {
                 ", IdPaciente3=" + IdPaciente3 +
                 ", IdPaciente4=" + IdPaciente4 +
                 ", IdPaciente5=" + IdPaciente5 +
-                ", IdPaciente6=" + IdPaciente6 +
-                ", IdPaciente7=" + IdPaciente7 +
-                ", IdPaciente8=" + IdPaciente8 +
-                ", IdPaciente9=" + IdPaciente9 +
-                ", IdPaciente10=" + IdPaciente10 +
                 '}';
     }
 }

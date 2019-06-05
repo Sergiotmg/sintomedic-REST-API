@@ -40,12 +40,12 @@ public class UsuarioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+
     // Create a new USER
     @PostMapping
     public Usuario createUser(@Valid @RequestBody Usuario usuario) {
         return usuariosRepositorio.save(usuario);
     }
-
     // Update a USER by id
     @PutMapping("{id}")
     public ResponseEntity<Usuario> updateUser(@PathVariable(value = "id") Long id,
