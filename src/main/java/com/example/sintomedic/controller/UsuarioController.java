@@ -24,14 +24,14 @@ public class UsuarioController {
     }
 
 
-    // Get All users
+    // GET ALL USERS
 
     @GetMapping
     public List<Usuario> findAll() {
         return usuariosRepositorio.findAll();
     }
 
-    // Get a Single USER
+    // GET A SINGLE USER
 
     @GetMapping(path = {"/{id}"})
     public ResponseEntity<Usuario> getUserById(@PathVariable(value = "id")long id){
@@ -41,7 +41,7 @@ public class UsuarioController {
     }
 
 
-    // Create a new USER
+    // CREATE NEW USER
     @PostMapping
     public Usuario createUser(@Valid @RequestBody Usuario usuario) {
         return usuariosRepositorio.save(usuario);
@@ -76,7 +76,7 @@ public class UsuarioController {
             }).orElse(ResponseEntity.notFound().build());
     }
 
-    // Delete a USER by id
+    // DELETE USER BY ID
     @DeleteMapping("{id}")
     public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id)  {
         return usuariosRepositorio.findById(id)

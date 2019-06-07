@@ -34,8 +34,7 @@ public class SintomasController {
         return sintomasRepositorio.findAll();
     }
 
-    // Get a Single SINTOMA
-    @GetMapping(path={"/{id}"})
+
     public ResponseEntity<Sintoma> getSintomaById(@PathVariable(value = "id") long id)  {
         return sintomasRepositorio.findById(id)
                 .map(sintoma -> ResponseEntity.ok().body(sintoma))
