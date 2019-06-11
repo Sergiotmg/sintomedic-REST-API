@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 @Entity
 @Table(name = "enfermedad_de_paciente")

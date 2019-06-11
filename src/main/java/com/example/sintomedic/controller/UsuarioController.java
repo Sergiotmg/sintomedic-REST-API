@@ -41,6 +41,7 @@ public class UsuarioController {
     }
 
 
+
     // CREATE NEW USER
     @PostMapping
     public Usuario createUser(@Valid @RequestBody Usuario usuario) {
